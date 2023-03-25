@@ -1,9 +1,0 @@
-.git
-.gitignore
-.gitlab
-.idea
-deploy
-.env.example
-Dockerfile
-.dockerignore
-docker-compose*
