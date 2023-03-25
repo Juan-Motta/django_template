@@ -4,7 +4,7 @@ services:
   django: &django
     build:
       context: .
-      dockerfile: ./compose/develop/Dockerfile
+      dockerfile: ./compose/production/Dockerfile
     image: exams-api
     restart: always
     deploy:
@@ -33,3 +33,7 @@ services:
       - 10000:8080
     sysctls:
       - net.ipv4.ip_unprivileged_port_start=0
+
+networks:
+  default:
+    name: exams-api-network
