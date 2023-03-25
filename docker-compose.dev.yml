@@ -30,6 +30,10 @@ services:
     volumes:
       - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
     ports:
-      - 8000:8080
+      - 10000:8080
     sysctls:
       - net.ipv4.ip_unprivileged_port_start=0
+
+networks:
+  default:
+    name: exams-api-network
