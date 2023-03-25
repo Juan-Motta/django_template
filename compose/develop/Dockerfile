@@ -22,12 +22,10 @@ RUN ldconfig
 COPY ./requirements ./requirements
 RUN pip install -r ./requirements/develop.txt
 
-COPY ./compose/develop/django/start.sh /start
+COPY ./compose/develop/django/start /start
 RUN sed -i 's/\r//g' /start
 RUN chmod +x /start
 
-COPY ./compose/develop/django/start.sh /start
-RUN sed -i 's/\r//' /start && chmod +x /start
 
 WORKDIR /app
 
