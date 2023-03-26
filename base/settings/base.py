@@ -218,7 +218,7 @@ AUTH_USER_MODEL = "users.User"
 REST_FRAMEWORK = {
     "DEFAULT_RENDERER_CLASSES": ("rest_framework.renderers.JSONRenderer",),
     "DEFAULT_PAGINATION_CLASS": "base.pagination.CustomPagination",
-    "EXCEPTION_HANDLER": "base.exception_hander.custom_exception_handler",
+    "EXCEPTION_HANDLER": "base.exception.custom_exception_handler",
     "PAGE_SIZE": 20,
 }
 
