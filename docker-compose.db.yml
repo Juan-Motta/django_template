@@ -1,0 +1,43 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: abcd1234
+      POSTGRES_DB: database
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - 54320:5432
+  
+  adminer:
+    image: adminer
+    restart: always
+    environment:
+      ADMINER_DESIGN: dracula
+      ADMINER_DEFAULT_DB_DRIVER: postgresql
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+  
+  redis:
+    image: redis:7.2-alpine
+    ports:
+      - 63790:6379
+    restart: always
+
+  commander:
+    image: rediscommander/redis-commander:latest
+    restart: always
+    environment:
+      - REDIS_HOSTS=172.17.0.1:6379
+    ports:
+      - "8081:8081"
+    depends_on:
+      - redis
+
+volumes:
+  postgres_data:
