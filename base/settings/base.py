@@ -16,10 +16,10 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 
 # determines whether the Django project is in debug mode or production mode. debug mode in true 
 # provides detailed error messages and other debugging information in the event of an error. 
-DEBUG = os.getenv("DEBUG")
+DEBUG = True if os.environ.get("DEBUG").lower() == "true" else False
 
 # specifies the valid hostnames or IP addresses that can be used to access the Django project.
-ALLOWED_HOSTS = [os.getenv("ALLOWED_HOSTS")]
+ALLOWED_HOSTS = [host.strip() for host in os.getenv("ALLOWED_HOSTS").split(",")]
 
 # determines whether Django should append a trailing slash to URLs that do not have one. For 
 # example, if APPEND_SLASH in True a request to http://example.com/mypage will be redirected 
