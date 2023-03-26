@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: ./compose/develop/Dockerfile
-    image: exams-api
+    image: django-api
     restart: always
     deploy:
       mode: replicated
@@ -36,4 +36,4 @@ services:
 
 networks:
   default:
-    name: exams-api-network
+    name: django-api-network
